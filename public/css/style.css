@@ -201,3 +201,20 @@ height: 8vh;
 }
 
 /****   End style Add Post ****/
+
+
+
+
+
+.a-register{
+    text-decoration: none;
+}
+.a-register:active{
+    text-decoration: none;
+}
+.a-register:link{
+    text-decoration: none;
+}
+.a-register:hover{
+    text-decoration: none;
+}

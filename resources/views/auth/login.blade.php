@@ -66,6 +66,11 @@
                         </div>
                     </form>
                 </div>
+                <div class="container">
+                    <div style="text-align:center">
+                        <a class="a-register" href="{{ route('register') }}">Inscription</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
