@@ -1,0 +1,203 @@
+body{
+   background-color:  #C4FFF4;
+}
+/* Style Navbar*/
+.bg-dd{
+    background-color: #1CC8FF;
+}
+.edit-pofile{
+    text-align: center;
+    margin-left: 10px;
+    
+}
+.img-edit{
+    width: 3vh;
+    height: 3vh;
+    margin-bottom: 1vh;
+}
+.a-edit{
+    text-decoration: none;
+    color: brown;
+}
+.a-edit:hover{
+    text-decoration: none;
+}
+.a-edit:focus{
+    border: 1px solid ;
+}
+.img-logout{
+    width: 3vh;
+    height: 3vh;
+    margin-bottom: 1vh;
+    margin-left: 4vh;
+}
+.a-logout{
+    color: red;
+}
+
+/* End Style Navbar*/
+/* Style Post Detaills*/
+.card{
+ background: #FFFFFF;
+box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+border: 2px solid rgb(186, 241, 245);
+}
+.form-control{
+    text-align: center;
+    border: 1px solid black;
+}
+.label-din{
+    text-align: center;
+}
+.btn-ajouter{
+background: #7863FF;
+border-radius: 10px;
+width: 20vh;
+height: 8vh;
+}
+.btn{
+    text-align: center;
+}
+#btnsend{
+    width: 4vh;
+    height: 4vh;
+}
+#comment{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+    width: 100%;
+    text-align: center;
+}
+.slug{
+    overflow: hidden;
+}
+
+/* End Style Post Detaills*/
+/* style  Home Post*/
+
+.center{
+    text-align: center;
+}
+.img{
+    text-align: center;
+}
+.img-post{
+    width: 100%;
+    height: 60vh;
+    border-radius: 10px;
+}
+.img-use{
+    border-radius: 50%;
+    width: 5vh;
+    height: 6vh;
+}
+/* End  style  Home Post*/
+
+/*style page profile */
+.image-user{
+    width: 15vh;
+    height: 15vh;
+    border-radius: 10px;
+}
+.div-image-user{
+    text-align: center;
+}
+
+.inputfile {
+	width: 20vh;
+	height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+	position: absolute;
+    z-index: -1;
+   
+}
+.inputfile + label {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(123, 235, 255);
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 35px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+.inputfile + label {
+    cursor: pointer; /* "hand" cursor */
+    
+}
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+.divEdit-Image{
+    text-align: center;
+}
+.Image-Edit-user{
+    width: 4vh;
+    height: 4vh;
+    position: relative;
+    margin-top: 81px;   
+}
+.btn-save{
+    margin-right: 35px;
+}
+#name{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+#email{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+#pass{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+
+
+.showme {
+    display: none;
+}
+.error {
+    border: 1px solid red;
+}
+/* end page style profile */
+/***   style Add Post **/
+#title{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+#desc{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+#user{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+#category{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+    text-align: center;
+}
+#fileAddPost{
+    box-shadow:  0 1px 1px rgba(0,0,0,.075);
+    background-color: #f1f2f7;
+    border:1px solid #eeeff2;
+}
+
+/****   End style Add Post ****/
