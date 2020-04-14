@@ -58,7 +58,7 @@ class PostController extends Controller
          // Upload Orginal Image           
            $postImage =generateRandomString(100). '.' . $files->getClientOriginalExtension();
            $request->file('image_post')->move($destinationPath, $postImage);
-        $data=array('title'=>$title,'disc'=>$disc,'slug'=>time('H:s:i').date('H:s:i').generateRandomString(200),'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image);
+        $data=array('title'=>$title,'disc'=>$disc,'slug'=>date('H:s:i').date('H:s:i').generateRandomString(200),'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image);
         DB::table('posts')->insert($data);
         return redirect('/');
         }
