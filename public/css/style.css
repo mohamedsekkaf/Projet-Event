@@ -115,6 +115,26 @@ height: 8vh;
 .link-comment:hover{
     text-decoration: none;
 }
+.imgfollow{
+
+}
+.imgfollow:hover{
+    animation: likehome 2s infinite linear alternate;
+}
+@keyframes likehome {
+    0%{
+        transform: rotate(50deg) ;;
+     
+    }
+    50%{
+        transform: rotate(0deg) ;;
+
+    }
+    100%{
+        transform: rotate(-50deg);
+    }
+}
+
 /* End  style  Home Post*/
 
 /*style page profile */

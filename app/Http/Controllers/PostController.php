@@ -160,6 +160,34 @@ class PostController extends Controller
         return redirect('/ShowPost/'.$slug );
     }
     /*********End  Add Add Like */
+
+ /********* Start Add Add  Like */
+ public function AddFollowHome(Request $request){
+    $nombre_follow =0;
+    $slug = $request->input('slug');
+    $user = Auth::user()->name;
+     $foll = Follower::all();
+     $var =0;
+     foreach($foll as $f){
+         if($f->slug_plus_user == $user.''.$slug){
+             $var++;
+         }
+         else{
+             $v =2;
+         }
+         $nombre_follow++;
+     }
+     if($var != 0){
+        DB::table('followers')->where('slug_plus_user',$user.''.$slug)->delete();
+     }
+     else{
+         $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
+         DB::table('followers')->insert($data);
+     }
+    return redirect('/');
+}
+/*********End  Add Add Like */
+    
     /********* Start Delete Delete Like */
     public function DeleteFollow(Request $request){
         $nombre_follow =0;

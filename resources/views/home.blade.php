@@ -40,11 +40,72 @@
                         </table>
                     </div>
                     <div class="container">
+                        <div class="container">
+                            <table>
+                                <tr>
+                                    <form action="{{ url('/AddFollowHome')}}" id="formimage" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('POST')
+                                        @csrf
+                                        <input type="hidden" name="slug" value="{{$post->slug}}">
+                                        <td style="width:10vh;text-align:center"><input class="imgfollow" type="image" id="{{$post->slug}}"
+                                                src="{{asset('/image/like.png')}}" style="width:5vh;height:5vh;"
+                                                alt="Submit">
+                                        </td>
+                                        <?php
+                                    $var = 0;
+                                    $userslug = Auth::user()->name.''.$post->slug;
+                                    foreach($foll as $f){
+                                        if($post->slug == $f->slug_follow){
+                                         $var++;
+                                        }
+                                    }
+                                    if($var >= 1000000){
+                                        $v = $var/1000000 ;
+                                        $v1 = $v.'M';
+                                    }
+                                    elseif($var >= 1000000000){
+                                        $v= $var/1000000000;
+                                        $v1= $v.'ML';
+                                    }
+                                    elseif($var >= 1000){
+                                        $v= $var/1000;
+                                        $v1= $v.'K';
+                                    }
+                                    else{
+                                        $v1= $var;
+                                    }
+                                    echo '<td><label for=""><strong>'.$v1.' Like </strong></label></td>';
+                                    ?>
+                                    </form>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    @foreach($foll as $f)
+                    @if($f->slug_plus_user == Auth::user()->name.$post->slug)
+                    <script>
+                    /* $(follow).addClass("err"); */
+                    var elem = document.getElementById("{{$post->slug}}");
+                    elem.setAttribute("src", "{{asset('/image/like1.png')}}");
+                    </script>
+                    @break
+                    @else
+                    <script>
+                    var elem = document.getElementById("{{$post->slug}}");
+                    elem.setAttribute("src", "{{asset('/image/like.png')}}");
+                    console.log(234567)
+                    </script>
+                    @endif
+                    @endforeach
+                    <div class="container">
                         <h6 style="text-align:center">Description</h6>
                         <p style="text-align:center"> <strong>{{$post->disc}}</strong></p>
                     </div>
                     <div class="container">
-                        <a class="link-comment" href="{{url('/ShowPost')}}/{{$post->slug}}"><p style="text-align:center;"><strong>Afficher Les commentaire</strong></p></a>
+                        <a class="link-comment" href="{{url('/ShowPost')}}/{{$post->slug}}">
+                            <p style="text-align:center;"><strong>Afficher Les commentaire</strong></p>
+                        </a>
                     </div>
                 </div>
             </div>
