@@ -11,9 +11,7 @@
             <img id="icon-edit-user-image" class="Image-Edit-user" src="{{asset('/image/edit1.png')}}" type="button"
                 onclick="ShowDIVEditImage()" data-fleep="tooltip" data-placement="bottom"
                 data-original-title="Clicker Pour Changer Image" data-toggle="modal">
-            <div class="middle">
-                <div class="text">John Doe</div>
-            </div>
+       
             <div class="showme" id="div-edit">
                 <form action="{{ url('/EditImageUser')}}" id="formimage" method="POST" enctype="multipart/form-data">
                     @method('POST')
