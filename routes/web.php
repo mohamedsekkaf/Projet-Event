@@ -26,6 +26,7 @@ Route::post('/EditUserPass','PostController@EditUserPass');
 Route::post('/AddComment','CommentController@AddComment');
 Route::post('/AddFollow','PostController@Addfollow');
 Route::post('/AddFollowHome','PostController@AddFollowHome');
+Route::post('/DeletePost','PostController@DeletePost');
 
 
 

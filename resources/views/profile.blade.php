@@ -73,5 +73,5 @@
 
 ?>
 @endforeach
-
+<button id="ref_butn">Refresh the page!</button>
 @endsection('content')

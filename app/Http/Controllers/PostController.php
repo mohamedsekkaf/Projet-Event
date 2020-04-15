@@ -179,6 +179,7 @@ class PostController extends Controller
      }
      if($var != 0){
         DB::table('followers')->where('slug_plus_user',$user.''.$slug)->delete();
+        
      }
      else{
          $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
@@ -216,8 +217,15 @@ class PostController extends Controller
     }
     /********* End Delete Delete Like */
 
+
+
+ public function DeletePost(Request $request){
+    $slug = $request->input('slug');
+    Post::where('slug',$slug)->delete();
+    return redirect('/');
 }
 
+}
 /******************fuction generate string different */
 
 function generateRandomString($length) {

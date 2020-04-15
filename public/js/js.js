@@ -11,6 +11,12 @@ function showpassword() {
   }
 }
 
+$(document).ready(function(){
+  $("#ref_butn").click(function(){
+ location.reload();
+  });
+});
+
 
   $(document).ready(function(){
         $('#frm input[type="text"]').blur(function(){

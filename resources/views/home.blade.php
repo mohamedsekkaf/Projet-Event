@@ -25,6 +25,17 @@
                                 echo '<td><span class="card-text"><b>'.$var.'</b></span></td>';?>
                                 <td style="text-align:right;width:20vh;color:red;"> <span style="color:red;"
                                         class="card-text">{{$post->time}}</span></td>
+                                @if(Auth::user()->name == 'mohammedsekkaf')
+                                <td>
+                                    <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('POST')
+                                        @csrf
+                                        <input type="hidden" name="slug"value="{{$post->slug}}" id="">
+                                        <input type="image" type="submit" src="{{asset('/image/delete.png')}}" style="width:5vh;height:5vh">
+                                    </form>
+                                </td>
+                                @endif
                             </tr>
                         </table>
                     </div>
@@ -48,9 +59,9 @@
                                         @method('POST')
                                         @csrf
                                         <input type="hidden" name="slug" value="{{$post->slug}}">
-                                        <td style="width:10vh;text-align:center"><input class="imgfollow" type="image" id="{{$post->slug}}"
-                                                src="{{asset('/image/like.png')}}" style="width:5vh;height:5vh;"
-                                                alt="Submit">
+                                        <td style="width:10vh;text-align:center"><input class="imgfollow" type="image"
+                                                id="{{$post->slug}}" src="{{asset('/image/like.png')}}"
+                                                style="width:5vh;height:5vh;" alt="Submit">
                                         </td>
                                         <?php
                                     $var = 0;
@@ -113,4 +124,5 @@
         </div>
     </div>
 </div>
+<button id="ref_butn">Refresh the page!</button>
 @endsection("content")

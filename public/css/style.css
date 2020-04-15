@@ -116,10 +116,16 @@ height: 8vh;
     text-decoration: none;
 }
 .imgfollow{
+border: 0px;
+}
+.imgfollow:link{
 
 }
 .imgfollow:hover{
     animation: likehome 2s infinite linear alternate;
+    border: 0px;
+    background-color: transparent;
+    border-radius: 50%;
 }
 @keyframes likehome {
     0%{
