@@ -15,9 +15,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'PostController@index')->middleware('web');
-Route::get('/ShowPost/{slug}' , 'PostController@ShowPost');
-
 Route::group(['middleware' => ['auth']], function(){
+Route::get('/ShowPost/{slug}' , 'PostController@ShowPost');
 Route::get('/AjouterPost', 'PostController@AjouterPostInfo');
 Route::post('/AjouterPost', 'PostController@AjouterPost');
 Route::get('/profile/{user}','PostController@profile');
