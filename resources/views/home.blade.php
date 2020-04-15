@@ -32,16 +32,19 @@
                         <table>
                             <tr>
                                 <td style="width:5vh"></td>
-                                <td style="width:100%"><img class="img-post" src="{{asset('/image_post')}}/{{$post->image_post}}"
-                                        alt="{{$post->title}}"></td>
+                                <td style="width:100%"><a href="{{url('/ShowPost')}}/{{$post->slug}}"><img
+                                            class="img-post" src="{{asset('/image_post')}}/{{$post->image_post}}"
+                                            alt="{{$post->title}}"></a></td>
                                 <td style="width:5vh"></td>
                             </tr>
                         </table>
                     </div>
                     <div class="container">
                         <h6 style="text-align:center">Description</h6>
-                       <p style="text-align:center"> <strong>{{$post->disc}}</strong></p>
-                       
+                        <p style="text-align:center"> <strong>{{$post->disc}}</strong></p>
+                    </div>
+                    <div class="container">
+                        <a class="link-comment" href="{{url('/ShowPost')}}/{{$post->slug}}"><p style="text-align:center;"><strong>Afficher Les commentaire</strong></p></a>
                     </div>
                 </div>
             </div>

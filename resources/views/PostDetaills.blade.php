@@ -161,8 +161,4 @@
         @endforeach
         @endforeach
         <div>
-
-
-            <div id="placehere">
-            </div>
-            @endsection("content")
+@endsection("content")

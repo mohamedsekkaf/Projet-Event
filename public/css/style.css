@@ -109,6 +109,12 @@ height: 8vh;
     width: 5vh;
     height: 6vh;
 }
+.link-comment{
+    color: crimson;
+}
+.link-comment:hover{
+    text-decoration: none;
+}
 /* End  style  Home Post*/
 
 /*style page profile */
