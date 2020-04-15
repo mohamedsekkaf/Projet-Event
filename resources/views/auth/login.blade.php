@@ -68,7 +68,7 @@
                 </div>
                 <div class="container">
                     <div style="text-align:center">
-                        <a class="a-register" href="{{ route('register') }}">Inscription</a>
+                        <a style="font-size:30px;" class="a-register" href="{{ route('register') }}">S'inscrire</a>
                     </div>
                 </div>
             </div>
