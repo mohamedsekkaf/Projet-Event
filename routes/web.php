@@ -26,8 +26,7 @@ Route::post('/EditUserEmail','PostController@EditUserEmail');
 Route::post('/EditImageUser','PostController@EditImageUser');
 Route::post('/EditUserPass','PostController@EditUserPass');
 Route::post('/AddComment','CommentController@AddComment');
-Route::post('/AddFollow','Postcontroller@Addfollow');
-Route::post('/DeleteFollow','Postcontroller@Deletefollow');
+Route::post('/AddFollow','PostController@Addfollow');
 
 });
 
