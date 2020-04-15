@@ -137,7 +137,7 @@
                                                 style="width:5vh;height:5vh;" alt="Submit">
                                         </td>
                                         <?php
-                                    $var = 100700090;
+                                    $var = 0;
                                     $userslug = Auth::user()->name.''.$post->slug;
                                     foreach($foll as $f){
                                         if($post->slug == $f->slug_follow){
