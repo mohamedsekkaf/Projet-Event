@@ -34,12 +34,18 @@ $(document).ready(function(){
 
       $(document).ready(function() {
         $("#inputEditImage").change(function() {
-          console.log(32235);
             if(!$(this).val()){
            console.log(32235);
             }
         });
     });
+/** update post  */
+    function Showupdate_post(){
+      document.getElementById('update_post').style.display ="block"
+    }
+    function Hideupdate_post(){
+      document.getElementById('update_post').style.display ="none"
+    }
 
 /** update image user  */
     function ShowDIVEditImage(){

@@ -15,7 +15,6 @@
                                     alt="{{$post->user_name}}"></td>
                             <?php $var = $post->user_name; for($i=0;$i<strlen($var);$i++){$var[$i] = strtoupper($var[$i]); ;} 
                                 echo '<td><span class="card-text"><b>'.$var.'</b></span></td>';?>
-                            
                         </tr>
                     </table>
                 </div>

@@ -28,6 +28,11 @@ Route::post('/AddFollow','PostController@Addfollow');
 Route::post('/AddFollowHome','PostController@AddFollowHome');
 Route::post('/DeletePost','PostController@DeletePost');
 
+Route::post('/UpdateTitlePost','PostController@UpdateTitlePost');
+Route::post('/UpdateDescriptionPost','PostController@UpdateDescriptionPost');
+Route::post('/UpdateCategoryPost','PostController@UpdateCategoryPost');
+Route::post('/UpdateImagePost','PostController@UpdateImagePost');
+
 
 
 

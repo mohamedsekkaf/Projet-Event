@@ -59,7 +59,7 @@ class PostController extends Controller
           // Define upload path
            $destinationPath = public_path('/image_post/'); // upload path
          // Upload Orginal Image           
-           $postImage =generateRandomString(100). '.' . $files->getClientOriginalExtension();
+           $postImage =generateRandomString(40). '.' . $files->getClientOriginalExtension();
            $request->file('image_post')->move($destinationPath, $postImage);
         $data=array('title'=>$title,'disc'=>$disc,'slug'=>$slug,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
         DB::table('posts')->insert($data);
@@ -189,33 +189,46 @@ class PostController extends Controller
 }
 /*********End  Add Add Like */
     
-    /********* Start Delete Delete Like */
-    public function DeleteFollow(Request $request){
-        $nombre_follow =0;
-        $d_slug = $request->input('d_slug');
-        $user = Auth::user()->name;
-         $foll = Follower::all();
-         $var =0;
-         foreach($foll as $f){
-             if(Auth::user()->name == $f->user_follow && $d_slug == $f->slug_follow){
-                 $var++;
-             }
-             else{
-                 $v =2;
-             }
-             $nombre_follow++;
-         }
-         if($var == 0 ){
-
-         }
-         else{
-
-             DB::table('followers')->where('slug_plus_user',$user.''.$d_slug)->delete();
-         }
-     
-        return redirect('/ShowPost/'.$d_slug );
+    /********* Start UpdateTitlePost */
+    public function UpdateTitlePost(Request $request){
+        $slug = $request->input('slug');
+        $title = $request->input('title');
+        DB::table('posts')->where('slug',$slug)->update(array('title'=>$title));
+        return redirect('/');
     }
-    /********* End Delete Delete Like */
+    /********* End UpdateTitle  */
+    /********* Start UpdateDescriptionPost */
+    public function UpdateDescriptionPost(Request $request){
+        $slug = $request->input('slug');
+        $disc = $request->input('description');
+        DB::table('posts')->where('slug',$slug)->update(array('disc'=>$disc));
+        return redirect('/');
+    }
+    /********* End UpdateDescriptionPost  */
+    /********* Start UpdateCategoryPost */
+    public function UpdateCategoryPost(Request $request){
+        $slug = $request->input('slug');
+        $category = $request->input('category');
+        DB::table('posts')->where('slug',$slug)->update(array('category_name'=>$category));
+        return redirect('/');
+    }
+    /********* End UpdateCategoryPost  */
+    /********* Start UpdateImagePost */
+    public function UpdateImagePost(Request $request){
+        $slug = $request->input('slug');
+        $image_post = $request->input('image_post');
+        if ($request->has('image')) {
+                $files = $request->file('image');
+            // Define upload path
+            $destinationPath = public_path('/image_post/'); // upload path
+            // Upload Orginal Image           
+            $postImage =$image_post;
+            $request->file('image')->move($destinationPath, $postImage);
+            DB::table('posts')->where('slug',$slug)->update(array('image_post'=>$postImage));
+            return redirect('/');
+        }
+    }
+    /********* End UpdateImagePost  */
 
 
 

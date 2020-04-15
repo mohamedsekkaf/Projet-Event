@@ -23,21 +23,94 @@
                                         alt="{{$post->user_name}}"></td>
                                 <?php $var = strtoupper($post->user_name);
                                 echo '<td><span class="card-text"><b>'.$var.'</b></span></td>';?>
-                                <td style="text-align:right;width:20vh;color:red;"> <span style="color:red;"
+                                <td style="text-align:right;width:100vh;"> <span style="color:red;"
                                         class="card-text">{{$post->time}}</span></td>
-                                @if(Auth::user()->name == 'mohammedsekkaf')
-                                <td>
+                                
+                                <td class="td-setting">
                                     <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"
                                         enctype="multipart/form-data">
                                         @method('POST')
                                         @csrf
-                                        <input type="hidden" name="slug"value="{{$post->slug}}" id="">
-                                        <input type="image" type="submit" src="{{asset('/image/delete.png')}}" style="width:5vh;height:5vh">
+                                        <div class="btn-group " role="group" aria-label="">
+                                            <div class="btn-group" role="group">
+                                                <input type="image" style="width:8vh;height:6vh;"
+                                                    src="{{asset('/image/setting.png')}}"
+                                                    class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                <ul class="dropdown-menu" s>
+                                                @if(Auth::user()->name == $post->user_name)
+                                                    <li style="text-align:center;"><input class="btn-delete" type="submit" value="Delete"></li>
+                                                    <li style="text-align:center;"><a class="btn-update" href="#" onclick="Showupdate_post()" >Update</a></li>
+                                                    @endif
+                                                    <li style="text-align:center;"><a class="btn-detaills" href="{{url('/ShowPost')}}/{{$post->slug}}">Detaills</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="slug" value="{{$post->slug}}" id="">
+                                        <!-- <input type="image" type="submit" src="{{asset('/image/delete.png')}}"
+                                            style="width:5vh;height:5vh"> -->
                                     </form>
                                 </td>
-                                @endif
+                               
                             </tr>
                         </table>
+                    </div>
+                    <div class="container" id="update_post">
+                        <div class="container">
+                            <div>
+                                <form action="{{ url('/UpdateTitlePost')}}" id="formimage" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('POST')
+                                    @csrf
+                                    <input type="hidden" name="slug" value="{{$post->slug}}">
+                                    <label for="">Change Title</label>
+                                    <input type="text"  value="{{$post->title}}" name="title" id="update_title" class="form-control">
+                                    <input type="submit" value="Save">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ url('/UpdateDescriptionPost')}}" id="formimage" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('POST')
+                                    @csrf
+                                    <input type="hidden" name="slug" value="{{$post->slug}}">
+                                    <label for="">Change Description</label>
+                                    <textarea type="text" name="description" id="update_title"
+                                        class="form-control">{{$post->disc}}</textarea>
+                                    <input type="submit" value="Save">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ url('/UpdateCategoryPost')}}" id="formimage" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('POST')
+                                    @csrf
+                                    <input type="hidden" name="slug" value="{{$post->slug}}">
+                                    <label for="">Change Category</label>
+                                    <select name="category" id="update_title" class="form-control">
+                                        <option value="Category 1">Category 1</option>
+                                        <option value="Category 2">Category 2</option>
+                                        <option value="Category 3">Category 3</option>
+                                    </select>
+                                    <input type="submit" value="Save">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ url('/UpdateImagePost')}}" id="formimage" method="POST"
+                                    enctype="multipart/form-data">
+                                    @method('POST')
+                                    @csrf  
+                                    <input type="hidden" name="image_post" value="{{$post->image_post}}">
+                                    <input type="hidden" name="slug" value="{{$post->slug}}">
+                                    <label for="">Change Image</label>
+                                    <input type="file" name="image" id="update_title" class="form-control">
+                                    <input type="submit" value="Save">
+                                </form>
+                            </div>
+                            <div>
+                                <input onclick="Hideupdate_post()" type="submit" value="Hide">
+                            </div>
+                        </div>
                     </div>
                     <div class="img container">
                         <table>
@@ -64,7 +137,7 @@
                                                 style="width:5vh;height:5vh;" alt="Submit">
                                         </td>
                                         <?php
-                                    $var = 0;
+                                    $var = 100700090;
                                     $userslug = Auth::user()->name.''.$post->slug;
                                     foreach($foll as $f){
                                         if($post->slug == $f->slug_follow){
@@ -86,8 +159,9 @@
                                     else{
                                         $v1= $var;
                                     }
-                                    echo '<td><label for=""><strong>'.$v1.' Like </strong></label></td>';
+                                    echo '<td style="width:100vh"><label for=""><strong>'.$v1.' Like </strong></label></td>';
                                     ?>
+                                    <td style="width:80vh;text-align:right;margin-top:-3px;"><strong>{{$post->category_name}}</strong></td>
                                     </form>
                                 </tr>
                             </table>
@@ -125,4 +199,15 @@
     </div>
 </div>
 <button id="ref_butn">Refresh the page!</button>
+
+
+
+
+
+
+
+
+
+
+<span class="navbar-toggler-icon"></span>
 @endsection("content")
