@@ -19,4 +19,8 @@ class CommentController extends Controller
         DB::table('comments')->insert($data);
         return redirect('/ShowPost/'.$slug);
     }
+
+
+
+    
 }

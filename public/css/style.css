@@ -73,6 +73,22 @@ height: 8vh;
 .slug{
     overflow: hidden;
 }
+#img:hover{
+    animation: like 2s infinite linear alternate;
+}
+@keyframes like {
+    0%{
+        transform: rotate(50deg) ;;
+     
+    }
+    50%{
+        transform: rotate(0deg) ;;
+
+    }
+    100%{
+        transform: rotate(-50deg);
+    }
+}
 
 /* End Style Post Detaills*/
 /* style  Home Post*/

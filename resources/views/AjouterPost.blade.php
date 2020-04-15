@@ -11,13 +11,13 @@
                     <div class="card">
                         <br>
                         <label class="label-din" for="">Title</label>
-                        <input id="title" type="text" name="title" class="form-control" placeholder="title">
+                        <input id="title" type="text" name="title" class="form-control" placeholder="title" value="{{old('title')}}">
                         <br>
                         <label class="label-din" for="">Discription</label>
-                        <textarea id="desc" name="disc" class="form-control" placeholder="Description"></textarea>
-                        <br>
-                        <label class="label-din" for="">Nom de l'Utilisateur</label>
-                        <input id="user" type="text" value="{{ Auth::user()->name }}" name="user_name" class="form-control"
+                        <textarea id="desc" name="disc" class="form-control" placeholder="Description" value="erfgqergeq" ></textarea>
+<!--                         <br>
+                        <label class="label-din" for="">Nom de l'Utilisateur</label> -->
+                        <input id="user" type="hidden" value="{{ Auth::user()->name }}" name="user_name" class="form-control"
                             placeholder="user name">
                         <br>
                         <label class="label-din" for="">Categorie</label>
@@ -28,7 +28,7 @@
                         </select>
                         <br>
                         <label  class="label-din">Post Image </label>
-                        <input id="fileAddPost" type="file" name="image_post" class="form-control">
+                        <input id="fileAddPost" type="file" name="image_post" class="form-control" value="{{('image_post')}}">
                         <div class="btn">
                             <input type="submit" class="btn-ajouter">
                         </div>

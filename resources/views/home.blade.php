@@ -39,7 +39,9 @@
                         </table>
                     </div>
                     <div class="container">
-                        
+                        <h6 style="text-align:center">Description</h6>
+                       <p style="text-align:center"> <strong>{{$post->disc}}</strong></p>
+                       
                     </div>
                 </div>
             </div>

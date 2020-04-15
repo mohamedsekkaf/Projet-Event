@@ -16,9 +16,8 @@ Route::get('/', function () {
 
 Route::get('/', 'PostController@index')->middleware('web');
 Route::get('/ShowPost/{slug}' , 'PostController@ShowPost');
+
 Route::group(['middleware' => ['auth']], function(){
-
-
 Route::get('/AjouterPost', 'PostController@AjouterPostInfo');
 Route::post('/AjouterPost', 'PostController@AjouterPost');
 Route::get('/profile/{user}','PostController@profile');
@@ -27,6 +26,8 @@ Route::post('/EditUserEmail','PostController@EditUserEmail');
 Route::post('/EditImageUser','PostController@EditImageUser');
 Route::post('/EditUserPass','PostController@EditUserPass');
 Route::post('/AddComment','CommentController@AddComment');
+Route::post('/AddFollow','Postcontroller@Addfollow');
+Route::post('/DeleteFollow','Postcontroller@Deletefollow');
 
 });
 

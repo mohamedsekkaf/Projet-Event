@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('category_name');
             $table->string('image_post');
             $table->string('img_user');
+            $table->integer('follow');
             $table->timestamps();
         });
     }
