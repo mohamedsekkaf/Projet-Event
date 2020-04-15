@@ -194,7 +194,7 @@ class PostController extends Controller
         $slug = $request->input('slug');
         $title = $request->input('title');
         DB::table('posts')->where('slug',$slug)->update(array('title'=>$title));
-        return redirect('/');
+        return redirect('/ShowPost/'.$slug);
     }
     /********* End UpdateTitle  */
     /********* Start UpdateDescriptionPost */
@@ -202,7 +202,7 @@ class PostController extends Controller
         $slug = $request->input('slug');
         $disc = $request->input('description');
         DB::table('posts')->where('slug',$slug)->update(array('disc'=>$disc));
-        return redirect('/');
+        return redirect('/ShowPost/'.$slug);
     }
     /********* End UpdateDescriptionPost  */
     /********* Start UpdateCategoryPost */
@@ -210,7 +210,7 @@ class PostController extends Controller
         $slug = $request->input('slug');
         $category = $request->input('category');
         DB::table('posts')->where('slug',$slug)->update(array('category_name'=>$category));
-        return redirect('/');
+        return redirect('/ShowPost/'.$slug);
     }
     /********* End UpdateCategoryPost  */
     /********* Start UpdateImagePost */
@@ -225,7 +225,7 @@ class PostController extends Controller
             $postImage =$image_post;
             $request->file('image')->move($destinationPath, $postImage);
             DB::table('posts')->where('slug',$slug)->update(array('image_post'=>$postImage));
-            return redirect('/');
+            return redirect('/ShowPost/'.$slug);
         }
     }
     /********* End UpdateImagePost  */

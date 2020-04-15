@@ -39,8 +39,8 @@
                                                     aria-haspopup="true" aria-expanded="false">
                                                 <ul class="dropdown-menu" s>
                                                 @if(Auth::user()->name == $post->user_name)
-                                                    <li style="text-align:center;"><input class="btn-delete" type="submit" value="Delete"></li>
-                                                    <li style="text-align:center;"><a class="btn-update" href="#" onclick="Showupdate_post()" >Update</a></li>
+                                                    <!-- <li style="text-align:center;"><input class="btn-delete" type="submit" value="Delete"></li>
+                                                    <li style="text-align:center;"><a class="btn-update" href="#" onclick="Showupdate_post()" >Update</a></li> -->
                                                     @endif
                                                     <li style="text-align:center;"><a class="btn-detaills" href="{{url('/ShowPost')}}/{{$post->slug}}">Detaills</a></li>
                                                 </ul>
@@ -54,63 +54,6 @@
                                
                             </tr>
                         </table>
-                    </div>
-                    <div class="container" id="update_post">
-                        <div class="container">
-                            <div>
-                                <form action="{{ url('/UpdateTitlePost')}}" id="formimage" method="POST"
-                                    enctype="multipart/form-data">
-                                    @method('POST')
-                                    @csrf
-                                    <input type="hidden" name="slug" value="{{$post->slug}}">
-                                    <label for="">Change Title</label>
-                                    <input type="text"  value="{{$post->title}}" name="title" id="update_title" class="form-control">
-                                    <input type="submit" value="Save">
-                                </form>
-                            </div>
-                            <div>
-                                <form action="{{ url('/UpdateDescriptionPost')}}" id="formimage" method="POST"
-                                    enctype="multipart/form-data">
-                                    @method('POST')
-                                    @csrf
-                                    <input type="hidden" name="slug" value="{{$post->slug}}">
-                                    <label for="">Change Description</label>
-                                    <textarea type="text" name="description" id="update_title"
-                                        class="form-control">{{$post->disc}}</textarea>
-                                    <input type="submit" value="Save">
-                                </form>
-                            </div>
-                            <div>
-                                <form action="{{ url('/UpdateCategoryPost')}}" id="formimage" method="POST"
-                                    enctype="multipart/form-data">
-                                    @method('POST')
-                                    @csrf
-                                    <input type="hidden" name="slug" value="{{$post->slug}}">
-                                    <label for="">Change Category</label>
-                                    <select name="category" id="update_title" class="form-control">
-                                        <option value="Category 1">Category 1</option>
-                                        <option value="Category 2">Category 2</option>
-                                        <option value="Category 3">Category 3</option>
-                                    </select>
-                                    <input type="submit" value="Save">
-                                </form>
-                            </div>
-                            <div>
-                                <form action="{{ url('/UpdateImagePost')}}" id="formimage" method="POST"
-                                    enctype="multipart/form-data">
-                                    @method('POST')
-                                    @csrf  
-                                    <input type="hidden" name="image_post" value="{{$post->image_post}}">
-                                    <input type="hidden" name="slug" value="{{$post->slug}}">
-                                    <label for="">Change Image</label>
-                                    <input type="file" name="image" id="update_title" class="form-control">
-                                    <input type="submit" value="Save">
-                                </form>
-                            </div>
-                            <div>
-                                <input onclick="Hideupdate_post()" type="submit" value="Hide">
-                            </div>
-                        </div>
                     </div>
                     <div class="img container">
                         <table>
