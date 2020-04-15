@@ -218,9 +218,6 @@ class PostController extends Controller
 
 }
 
-
-
-
 /******************fuction generate string different */
 
 function generateRandomString($length) {
