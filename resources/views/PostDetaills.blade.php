@@ -38,7 +38,7 @@
                                     @method('POST')
                                     @csrf
                                     <input type="hidden" name="slug" value="{{$post->slug}}">
-                                    <input type="hidden" name="nombre_follow" id="" value="{{$post->follow}}">
+                                    <input type="hidden" name="nombre_follow" src="{{asset('/image/like1.png')}}" id="" value="{{$post->follow}}">
                                     <td style="width:10vh;text-align:center"><input type="image" id="img"  style="width:5vh;height:5vh;" alt="Submit">
                                     </td>
                                     <?php
