@@ -188,7 +188,6 @@ class PostController extends Controller
     return redirect('/');
 }
 /*********End  Add Add Like */
-    
     /********* Start UpdateTitlePost */
     public function UpdateTitlePost(Request $request){
         $slug = $request->input('slug');
@@ -229,9 +228,6 @@ class PostController extends Controller
         }
     }
     /********* End UpdateImagePost  */
-
-
-
  public function DeletePost(Request $request){
     $slug = $request->input('slug');
     Post::where('slug',$slug)->delete();

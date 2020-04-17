@@ -122,7 +122,6 @@
                     <script>
                     var elem = document.getElementById("{{$post->slug}}");
                     elem.setAttribute("src", "{{asset('/image/like.png')}}");
-                    console.log(234567)
                     </script>
                     @endif
                     @endforeach
@@ -152,5 +151,5 @@
 
 
 
-<span class="navbar-toggler-icon"></span>
+<span class="glyphicon glyphicon-hand-right"></span>
 @endsection("content")
