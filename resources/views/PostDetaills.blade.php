@@ -127,7 +127,7 @@
                                 <input type="hidden" name="slug" value="{{$post->slug}}">
                                 <input type="hidden" name="nombre_follow" src="{{asset('/image/like1.png')}}" id=""
                                     value="{{$post->follow}}">
-                                <td style="width:10vh;text-align:center"><input type="image" id="img"
+                                <td style="width:10vh;text-align:center"><input type="image" id="img" src="{{asset('/image/like.png')}}"
                                         style="width:5vh;height:5vh;" alt="Submit">
                                 </td>
                                 <td>
@@ -300,4 +300,5 @@
     @endforeach
     @endforeach
     <div>
+        
         @endsection("content")

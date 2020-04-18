@@ -226,7 +226,7 @@ class PostController extends Controller
          $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
          DB::table('followers')->insert($data);
      }
-    return redirect('/profile/'.$user_profile);
+    return redirect('/profile/'.$user_profile)->with('status', $slug);
 }
 /*********End  Add Add Like Profile*/
 
