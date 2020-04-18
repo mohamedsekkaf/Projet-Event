@@ -60,7 +60,7 @@ class PostController extends Controller
           // Define upload path
            $destinationPath = public_path('/image_post/'); // upload path
          // Upload Orginal Image           
-           $postImage =generateRandomString(40). '.' . $files->getClientOriginalExtension();
+           $postImage =generateRandomString(40). '.' .'png';
            $request->file('image_post')->move($destinationPath, $postImage);
         $data=array('title'=>$title,'disc'=>$disc,'slug'=>$slug,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
         DB::table('posts')->insert($data);
