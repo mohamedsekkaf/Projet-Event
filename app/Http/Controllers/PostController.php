@@ -19,6 +19,7 @@ class PostController extends Controller
         $posts = Post::orderBy('id', 'desc')->get();
         $foll = Follower::all();
         foreach($posts as $post){
+            $post->setAttribute('name', strtoupper($post->user_name));
             $post->setAttribute('time',Carbon::parse($post->created_at)->diffForHumans());
         }
         return view('home',compact('posts','foll'));
@@ -53,7 +54,7 @@ class PostController extends Controller
         $user_name = $request->input('user_name');
         $category_name = $request->input('category_name');
         $image_post = $request->input('image_post');
-        $slug = generateRandomString(200);
+        $slug = generateRandomString(50);
         if ($request->has('image_post')) {
             $files = $request->file('image_post');
           // Define upload path
@@ -67,8 +68,15 @@ class PostController extends Controller
         }
     }
     public function profile($user){
+        Carbon::setlocale('fr');
         $profileuser = DB::select('select * from users where name =?',[$user]) ;
-        return view('profile',compact('profileuser'));
+        $posts = Post::orderBy('id', 'desc')->get();
+        $foll = Follower::all();
+        foreach($posts as $post){
+            $post->setAttribute('name', strtoupper($post->user_name));
+            $post->setAttribute('time',Carbon::parse($post->created_at)->diffForHumans());
+        }
+        return view('profile',compact('profileuser','posts','foll'));
     }
 /**============================ update user name  */
     public function EditUser(Request $request){
@@ -84,6 +92,12 @@ class PostController extends Controller
        DB::table('posts')
        ->where('user_name', $user)
        ->update(array('user_name' => $name ));
+       DB::table('comments')
+       ->where('user',$user)
+       ->update(array('user'=>$name));
+       DB::table('followers')
+       ->where('user_follow',$user)
+       ->update(array('user_follow'=>$name));
        return redirect('/profile/'.$name);
     }
     /******************** Update user Email */
@@ -179,7 +193,6 @@ class PostController extends Controller
      }
      if($var != 0){
         DB::table('followers')->where('slug_plus_user',$user.''.$slug)->delete();
-        
      }
      else{
          $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
@@ -188,6 +201,36 @@ class PostController extends Controller
     return redirect('/');
 }
 /*********End  Add Add Like */
+ /********* Start Add Add  Like Profile */
+ public function AddFollowProfile(Request $request){
+    $nombre_follow =0;
+    $slug = $request->input('slug');
+    $user_profile = $request->input('user_profile');
+    $user = Auth::user()->name;
+     $foll = Follower::all();
+     $var =0;
+     foreach($foll as $f){
+         if($f->slug_plus_user == $user.''.$slug){
+             $var++;
+         }
+         else{
+             $v =2;
+         }
+         $nombre_follow++;
+     }
+     if($var != 0){
+        DB::table('followers')->where('slug_plus_user',$user.''.$slug)->delete();
+        
+     }
+     else{
+         $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
+         DB::table('followers')->insert($data);
+     }
+    return redirect('/profile/'.$user_profile);
+}
+/*********End  Add Add Like Profile*/
+
+
     /********* Start UpdateTitlePost */
     public function UpdateTitlePost(Request $request){
         $slug = $request->input('slug');

@@ -32,6 +32,8 @@ Route::post('/UpdateTitlePost','PostController@UpdateTitlePost');
 Route::post('/UpdateDescriptionPost','PostController@UpdateDescriptionPost');
 Route::post('/UpdateCategoryPost','PostController@UpdateCategoryPost');
 Route::post('/UpdateImagePost','PostController@UpdateImagePost');
+Route::post('/AddFollowProfile','PostController@AddFollowProfile');
+
 
 
 
