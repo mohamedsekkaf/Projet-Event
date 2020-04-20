@@ -300,12 +300,4 @@
     @endforeach
     @endforeach
     <div>
-<audio id="iddd" controls style="width:100%" > 
-<source src="{{asset('/audio/hazina.mp3')}}" type="audio/mp3" >
-<source src="{{asset('/audio/hazina.ogg')}}" type="audio/ogg">
-</audio>
-<script>
-var x = document.getElementById("idd");
-   x.play();
-</script>
 @endsection("content")
