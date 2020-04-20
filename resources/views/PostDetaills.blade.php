@@ -14,9 +14,9 @@
                     <tr>
                         <td><a href="{{url('/profile')}}/{{$post->user_name}}"><img class="card-img-top img-use"
                                     src="{{url('/image_user')}}/{{$post->img_user}}" alt="{{$post->user_name}}"></a>
-                        </td>
-                        <?php $var = $post->user_name; for($i=0;$i<strlen($var);$i++){$var[$i] = strtoupper($var[$i]); ;} 
-                                echo '<td><strong class="card-text"><b>'.$var.'</b></strong></td>';?>
+                        </td> 
+                        <td><strong class="card-text"><b>{{$post->name}}</b></strong></td>
+                        <td style="width:140vh;text-align:center;">{{$post->time}}</td>
                         <td class="td-setting">
                             <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"
                                 enctype="multipart/form-data">
@@ -245,7 +245,7 @@
             </div>
             <div class="container">
                 <table>
-                    @foreach($comment as $c)
+                    @foreach($comments as $c)
                     <tr>
                         <td style="width:10vh;text-align:center"><img class="card-img-top img-use"
                                 src="{{url('/image_user')}}/{{$c->user_image}}" alt="">{{$c->user}}</td>
@@ -265,7 +265,7 @@
                                         }
                                 ?>
                         </td>
-                        <td style="width:;text-align:center">{{$c->date}}</td>
+                        <td style="width:;text-align:center">{{$c->time}}</td>
                     </tr>
                     <tr>
                         <td>
@@ -300,5 +300,12 @@
     @endforeach
     @endforeach
     <div>
-        
-        @endsection("content")
+<audio id="iddd" controls style="width:100%" > 
+<source src="{{asset('/audio/hazina.mp3')}}" type="audio/mp3" >
+<source src="{{asset('/audio/hazina.ogg')}}" type="audio/ogg">
+</audio>
+<script>
+var x = document.getElementById("idd");
+   x.play();
+</script>
+@endsection("content")

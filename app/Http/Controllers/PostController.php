@@ -8,12 +8,14 @@ use App\Post;
 use App\Comment;
 use App\Category;
 use App\Follower;
+use App\Compte_Post;
 use DB;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Validation\Validator;
 class PostController extends Controller
 {
+/**** function for view home and compact the variables to view home */
     public function index(){
         Carbon::setlocale('fr');
         $posts = Post::orderBy('id', 'desc')->get();
@@ -24,15 +26,31 @@ class PostController extends Controller
         }
         return view('home',compact('posts','foll'));
     }
+
+/***** function for show Post after click on this post for show post detailles */
     public function ShowPost($slug){
-        $comment = DB::select("select * from comments where slug = ?",[$slug]);
-        $pd = DB::select("select * from posts where slug = ?",[$slug]);
+        $comments= Comment::where('slug' , $slug)->get();
+        foreach($comments as $comment){
+            $comment->setAttribute('time',Carbon::parse($comment->created_at)->diffForHumans());
+            echo '<script>console.log(1)</script>';
+        }
+        $pd = Post::where('slug',$slug)->get();
+        foreach($pd as $post){
+            $post->setAttribute('name', strtoupper($post->user_name));
+            $post->setAttribute('time',Carbon::parse($post->created_at)->diffForHumans());
+        } 
+        /* $comment = DB::select("select * from comments where slug = ?",[$slug]); */
+         /* $pd = DB::select("select * from posts where slug = ?",[$slug]); */ 
         $foll = Follower::all();
-       return  view('PostDetaills',compact('pd','comment','foll'));
+       return  view('PostDetaills',compact('pd','comments','foll'));
     }
+
+/****** function for show view Ajouter post  */
     public function AjouterPostInfo(){
         return view('AjouterPost');
     }
+
+/*****function for Ajouter post back end  */
     public function AjouterPost(Request $request){
         $request->validate([
             "title"  =>"required",
@@ -47,14 +65,21 @@ class PostController extends Controller
             "user_name.required"  =>"Utilisateur Obligatoire",
             "category_name.required"  =>"Categorie Obligatoire",
             "image_post.required"  =>"Image Obligatoire ",
-        ]
-        );
+        ]);
+       
+        $compte_post = Compte_Post::all();
+        foreach($compte_post as $compte){
+          $compte_post = $compte->compte_post+1;
+        }
+        DB::table('compte__posts')
+        ->update(array('compte_post'=>$compte_post));
+        
         $title = $request->input('title');
         $disc = $request->input('disc');
         $user_name = $request->input('user_name');
         $category_name = $request->input('category_name');
         $image_post = $request->input('image_post');
-        $slug = generateRandomString(50);
+       /*  $slug = generateRandomString(50); */
         if ($request->has('image_post')) {
             $files = $request->file('image_post');
           // Define upload path
@@ -62,11 +87,12 @@ class PostController extends Controller
          // Upload Orginal Image           
            $postImage =generateRandomString(40). '.' .'png';
            $request->file('image_post')->move($destinationPath, $postImage);
-        $data=array('title'=>$title,'disc'=>$disc,'slug'=>$slug,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
+        $data=array('title'=>$title,'disc'=>$disc,'slug'=>$compte_post,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
         DB::table('posts')->insert($data);
         return redirect('/');
         }
     }
+    
     public function profile($user){
         Carbon::setlocale('fr');
         $profileuser = DB::select('select * from users where name =?',[$user]) ;
@@ -78,6 +104,8 @@ class PostController extends Controller
         }
         return view('profile',compact('profileuser','posts','foll'));
     }
+
+
 /**============================ update user name  */
     public function EditUser(Request $request){
         $request->validate([
@@ -100,6 +128,8 @@ class PostController extends Controller
        ->update(array('user_follow'=>$name));
        return redirect('/profile/'.$name);
     }
+
+
     /******************** Update user Email */
     public function EditUserEmail(Request $request){
         $request->validate([
@@ -113,6 +143,8 @@ class PostController extends Controller
         $user_Auth=Auth::user()->name;
         return redirect('/profile/'.$user_Auth);
     }
+
+
 /**=====================update user image  */
     public function EditImageUser(Request $request){
         $image = $request->input('file');
@@ -136,6 +168,9 @@ class PostController extends Controller
         return redirect('/profile/'.$user);
         }
     }
+
+
+
     /******************** Update user Password */
     public function EditUserPass(Request $request){
         $request->validate([
@@ -148,6 +183,9 @@ class PostController extends Controller
         ->update(array('password'=>hash::make($pasword)));
         return redirect('/profile/'.$user);
     }
+
+
+
   /********* Start Add Add  Like */
     public function AddFollow(Request $request){
         $nombre_follow =0;
@@ -174,6 +212,9 @@ class PostController extends Controller
         return redirect('/ShowPost/'.$slug );
     }
     /*********End  Add Add Like */
+
+
+
 
  /********* Start Add Add  Like */
  public function AddFollowHome(Request $request){

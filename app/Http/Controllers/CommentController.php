@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Comment;
 use Auth;
 class CommentController extends Controller
 {
@@ -16,7 +17,7 @@ class CommentController extends Controller
         $user_image = $request->input('user_image');
         $slug = $request->input('slug');
         $data = array('comment'=>$comment,'slug'=>$slug,'user'=>$user,'user_image'=>$user_image,'date'=>date('yy-m-d').' '.date('H:s:i'));
-        DB::table('comments')->insert($data);
+        Comment::create($data);
         return redirect('/ShowPost/'.$slug);
     }
 

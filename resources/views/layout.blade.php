@@ -11,7 +11,6 @@
   <script src="{{asset('/js/bootstrap.js')}}"></script>
   <script src="{{asset('/js/js.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 <body>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Follower;
 
 class CreateFollowersTable extends Migration
 {
@@ -19,9 +20,10 @@ class CreateFollowersTable extends Migration
             $table->integer('follow');
             $table->string('slug_follow');
             $table->string('slug_plus_user');
-
-            
+            $table->timestamps();
         });
+        $data = array('user_follow'=>'polat' ,'follow'=>1,'slug_follow'=>2,'slug_plus_user'=>'polat2');
+        Follower::create($data);
     }
 
     /**

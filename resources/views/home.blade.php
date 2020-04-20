@@ -23,7 +23,7 @@
                             </td>
                             <td><a class="a-user-name" href="{{url('/profile')}}/{{$post->user_name}}"><span
                                         class="card-text"><b>{{$post->name}}</b></span></a></td>
-                            <td style="text-align:right;width:100vh;"> <span style="color:red;"
+                            <td style="text-align:center;width:140vh;"> <span style="color:red;"
                                     class="card-text">{{$post->time}}</span></td>
 
                             <td class="td-setting">
