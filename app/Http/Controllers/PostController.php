@@ -8,7 +8,7 @@ use App\Post;
 use App\Comment;
 use App\Category;
 use App\Follower;
-use App\Compte_Post;
+use App\compte_Post;
 use DB;
 use Carbon\Carbon;
 use Auth;
@@ -67,7 +67,7 @@ class PostController extends Controller
             "image_post.required"  =>"Image Obligatoire ",
         ]);
        
-        $compte_post = Compte_Post::all();
+        $compte_post = compte_Post::all();
         foreach($compte_post as $compte){
           $compte_post = $compte->compte_post+1;
         }
@@ -92,7 +92,7 @@ class PostController extends Controller
         return redirect('/');
         }
     }
-    
+
     public function profile($user){
         Carbon::setlocale('fr');
         $profileuser = DB::select('select * from users where name =?',[$user]) ;
