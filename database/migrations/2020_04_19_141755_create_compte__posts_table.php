@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Compte_Post;
+use App\compte_Post;
 
 class CreateComptePostsTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateComptePostsTable extends Migration
             $table->timestamps();
         });
         $data = array('compte_post'=>1);
-        Compte_Post::create($data);
+        compte_Post::create($data);
 /* 
         DB::table('compte__posts')->insert(array('compte_post'=>1)); */
     }
