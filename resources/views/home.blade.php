@@ -21,10 +21,9 @@
                             <td><a href="{{url('/profile')}}/{{$post->user_name}}"><img class="card-img-top img-use"
                                         src="{{url('/image_user')}}/{{$post->img_user}}" alt="{{$post->user_name}}"></a>
                             </td>
-                            <td><a class="a-user-name" href="{{url('/profile')}}/{{$post->user_name}}"><span
+                            <td style="width:160vh"><a class="a-user-name" href="{{url('/profile')}}/{{$post->user_name}}"><span
                                         class="card-text"><b>{{$post->name}}</b></span></a></td>
-                            <td style="text-align:center;width:140vh;"> <span style="color:red;"
-                                    class="card-text">{{$post->time}}</span></td>
+                            <td style="text-align:center;width:200vh;"><span class="card-text">{{$post->time}}</span></td>
 
                             <td class="td-setting">
                                 <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"

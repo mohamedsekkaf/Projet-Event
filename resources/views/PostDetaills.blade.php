@@ -10,12 +10,14 @@
                 <h4 class="card-title center">{{$post->title}}</h4>
             </div>
             <div class="container">
+
                 <table>
                     <tr>
                         <td><a href="{{url('/profile')}}/{{$post->user_name}}"><img class="card-img-top img-use"
                                     src="{{url('/image_user')}}/{{$post->img_user}}" alt="{{$post->user_name}}"></a>
-                        </td> 
-                        <td><strong class="card-text"><b>{{$post->name}}</b></strong></td>
+                        </td>
+                        <td style="width:160vh"><strong class="card-text"><b>{{$post->name}}</b></strong>
+                        </td>
                         <td style="width:140vh;text-align:center;">{{$post->time}}</td>
                         <td class="td-setting">
                             <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"
@@ -36,7 +38,8 @@
                                                     onclick="Showupdate_post()">Modify</a></li>
                                             @endif
                                             <li style="text-align:center;"><a class="btn-detaills"
-                                                    href="{{url('/ShowPost')}}/{{$post->slug}}">Detaills</a></li>
+                                                    href="{{url('/ShowPost')}}/{{$post->slug}}">Detaills</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -48,6 +51,7 @@
                     </tr>
                 </table>
             </div>
+
             <div class="container" id="update_post">
                 <div class="container">
                     <div>
@@ -107,106 +111,112 @@
                 </div>
             </div>
             <div class="img container">
+
                 <table>
                     <tr>
-                        <td style="width:5vh"></td>
+                        <td style="width:40vh"></td>
                         <td style="width:100%;"><img class="img-post"
-                                src="{{asset('/image_post')}}/{{$post->image_post}}" alt="{{$post->title}}"></td>
-                        <td style="width:5vh"></td>
+                                src="{{asset('/image_post')}}/{{$post->image_post}}" alt="{{$post->title}}">
+                        </td>
+                        <td style="width:40vh"></td>
                     </tr>
                 </table>
             </div>
             <div class="container">
-                <div class="container">
-                    <table>
-                        <tr>
-                            <form action="{{ url('/AddFollow')}}" id="formimage" method="POST"
-                                enctype="multipart/form-data">
-                                @method('POST')
-                                @csrf
-                                <input type="hidden" name="slug" value="{{$post->slug}}">
-                                <input type="hidden" name="nombre_follow" src="{{asset('/image/like1.png')}}" id=""
-                                    value="{{$post->follow}}">
-                                <td style="width:10vh;text-align:center"><input type="image" id="img" src="{{asset('/image/like.png')}}"
-                                        style="width:5vh;height:5vh;" alt="Submit">
-                                </td>
-                                <td>
-                                    <div class="btn-group " role="group" aria-label="">
-                                        <div class="btn-group" role="group">
-                                            <botton style="width:8vh;height:6vh;"
-                                                class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <?php
-                                    $var = 0;
-                                    $userslug = Auth::user()->name.''.$post->slug;
-                                    foreach($foll as $f){
-                                        if($post->slug == $f->slug_follow){
-                                         $var++;
-                                        }
-                                    }
-                                    if($var >= 1000000){
-                                        $v = $var/1000000 ;
-                                        $v1 = $v.'M';
-                                    }
-                                    elseif($var >= 1000000000){
-                                        $v= $var/1000000000;
-                                        $v1= $v.'ML';
-                                    }
-                                    elseif($var >= 1000){
-                                        $v= $var/1000;
-                                        $v1= $v.'K';
-                                    }
-                                    else{
-                                        $v1= $var;
-                                    }
-                                    echo '<strong>'.$v1.' Like</strong>' ;
-                                    ?>
-                                            </botton>
-                                            <ul style="text-align:center;margin-top: -8px;    margin-left: 18px;" class="dropdown-menu">
-                                                <?php
-                                                $follow = 0;
-                                                foreach($foll as $f){
-                                                    if($post->slug == $f->slug_follow){
-                                                        $follow++;
-                                                    }
-                                                } 
-                                                if($follow > 10){
-                                                    $var=0;
-                                                    foreach($foll as $ff){
-                                                        if($post->slug == $ff->slug_follow){
-                                                            if($var == 10){
-                                                            break;
+                <table>
+                    <tr>
+                        <form action="{{ url('/AddFollow')}}" id="formimage" method="POST"
+                            enctype="multipart/form-data">
+                            @method('POST')
+                            @csrf
+                            <input type="hidden" name="slug" value="{{$post->slug}}">
+                            <input type="hidden" name="nombre_follow" src="{{asset('/image/like1.png')}}" id=""
+                                value="{{$post->follow}}">
+                            <td style="width:10vh;text-align:center"><input type="image" id="img"
+                                    src="{{asset('/image/like.png')}}" style="width:5vh;height:5vh;" alt="Submit">
+                            </td>
+                            <td>
+                                <div class="btn-group " role="group" aria-label="">
+                                    <div class="btn-group" role="group">
+                                        <botton style="width:8vh;height:6vh;" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <?php
+                                                            $var = 0;
+                                                            $userslug = Auth::user()->name.''.$post->slug;
+                                                            foreach($foll as $f){
+                                                                if($post->slug == $f->slug_follow){
+                                                                $var++;
+                                                                }
                                                             }
-                                                            else{    
-                                                                ?>
-                                                                <li><a href="{{url('/profile')}}/<?php echo $ff->user_follow?>"><?php echo $ff->user_follow; ?></a></li>
-                                                                <?php
-                                                              
+                                                            if($var >= 1000000){
+                                                                $v = $var/1000000 ;
+                                                                $v1 = $v.'M';
                                                             }
-                                                        }
-                                                        $var++;
-                                                    }
-                                                    $somm =$follow -10;
-                                                    echo '<li>And '.$somm.' Auther</li>';
-                                                }else{
-                                                    foreach($foll as $ff){
-                                                        if($post->slug == $ff->slug_follow){
-                                                           ?>
-                                                           <li><a href="{{url('/profile')}}/<?php echo $ff->user_follow?>"><?php echo $ff->user_follow; ?></a></li>
-                                                           <?php
-                                                        }
-                                                    }
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
+                                                            elseif($var >= 1000000000){
+                                                                $v= $var/1000000000;
+                                                                $v1= $v.'ML';
+                                                            }
+                                                            elseif($var >= 1000){
+                                                                $v= $var/1000;
+                                                                $v1= $v.'K';
+                                                            }
+                                                            else{
+                                                                $v1= $var;
+                                                            }
+                                                            echo '<strong>'.$v1.' Like</strong>' ;
+                                                            ?>
+                                        </botton>
+                                        <ul style="text-align:center;margin-top: -8px;    margin-left: 18px;"
+                                            class="dropdown-menu">
+                                            <?php
+                                                            $follow = 0;
+                                                            foreach($foll as $f){
+                                                                if($post->slug == $f->slug_follow){
+                                                                    $follow++;
+                                                                }
+                                                            } 
+                                                            if($follow > 10){
+                                                                $var=0;
+                                                                foreach($foll as $ff){
+                                                                    if($post->slug == $ff->slug_follow){
+                                                                        if($var == 10){
+                                                                        break;
+                                                                        }
+                                                                        else{    
+                                                                            ?>
+                                            <li><a
+                                                    href="{{url('/profile')}}/<?php echo $ff->user_follow?>"><?php echo $ff->user_follow; ?></a>
+                                            </li>
+                                            <?php
+                                                                        
+                                                                        }
+                                                                    }
+                                                                    $var++;
+                                                                }
+                                                                $somm =$follow -10;
+                                                                echo '<li>And '.$somm.' Auther</li>';
+                                                            }else{
+                                                                foreach($foll as $ff){
+                                                                    if($post->slug == $ff->slug_follow){
+                                                                    ?>
+                                            <li><a
+                                                    href="{{url('/profile')}}/<?php echo $ff->user_follow?>"><?php echo $ff->user_follow; ?></a>
+                                            </li>
+                                            <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                            ?>
+                                        </ul>
                                     </div>
+                                </div>
 
-                                </td>
-                            </form>
-                        </tr>
-                    </table>
-                </div>
+                            </td>
+                            <td style="width:200vh;text-align:right;">
+                                <strong>{{$post->category_name}}</strong></td>
+                        </form>
+                    </tr>
+                </table>
             </div>
             <br>
             <div class="container">
@@ -220,7 +230,8 @@
                     <div>
                         <table>
                             <tr>
-                                <td style="width:6vh;"><img class="img-use" src="{{asset('/image_user')}}/{{Auth::user()->name}}.png" alt=""></td>
+                                <td style="width:6vh;"><img class="img-use"
+                                        src="{{asset('/image_user')}}/{{Auth::user()->name}}.png" alt=""></td>
                                 <td style="width:150vh;text-align:center"><textarea id="comment" name="comment"
                                         placeholder="Add Comment"></textarea></td>
                                 <td><input id="btnsend" type="image" src="{{asset('/image/send.png')}}" border="0"
@@ -300,4 +311,4 @@
     @endforeach
     @endforeach
     <div>
-@endsection("content")
+        @endsection("content")

@@ -89,9 +89,8 @@
                             <td><img class="card-img-top img-use" src="{{url('/image_user')}}/{{$post->img_user}}"
                                     alt="{{$post->user_name}}">
                             </td>
-                            <td><span class="card-text"><b>{{$post->name}}</b></span></td>
-                            <td style="text-align:center;width:140vh;"> <span style="color:red;"
-                                    class="card-text">{{$post->time}}</span></td>
+                            <td style="width:160vh"><span class="card-text"><b>{{$post->name}}</b></span></td>
+                            <td style="text-align:center;width:100vh;"><span class="card-text">{{$post->time}}</span></td>
 
                             <td class="td-setting">
                                 <form action="{{ url('/DeletePost')}}" id="formimage" method="POST"
@@ -135,7 +134,6 @@
                     </table>
                 </div>
                 <div class="container">
-                    <div class="container">
                         <table>
                             <tr>
                                 <form action="{{ url('/AddFollowProfile')}}" id="formimage" method="POST"
@@ -225,12 +223,11 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="width:80vh;text-align:right;margin-top:-3px;">
+                                    <td style="width:200vh;text-align:right;margin-top:-3px;">
                                         <strong>{{$post->category_name}}</strong></td>
                                 </form>
                             </tr>
                         </table>
-                    </div>
                 </div>
                 @foreach($foll as $f)
                 @if($f->slug_plus_user == Auth::user()->name.$post->slug)
