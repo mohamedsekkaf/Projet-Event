@@ -85,7 +85,7 @@ class PostController extends Controller
           // Define upload path
            $destinationPath = public_path('/image_post/'); // upload path
          // Upload Orginal Image           
-           $postImage =generateRandomString(40). '.' .'png';
+           $postImage =$compte_post. '.' .'png';
            $request->file('image_post')->move($destinationPath, $postImage);
         $data=array('title'=>$title,'disc'=>$disc,'slug'=>$compte_post,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
         DB::table('posts')->insert($data);
@@ -114,6 +114,7 @@ class PostController extends Controller
         );
         $name = $request->input('name');
         $user =Auth::user()->name;
+        $follower = Follower::all();
         DB::table('users')
        ->where('name', $user)
        ->update(array('name' => $name));
@@ -123,9 +124,19 @@ class PostController extends Controller
        DB::table('comments')
        ->where('user',$user)
        ->update(array('user'=>$name));
-       DB::table('followers')
-       ->where('user_follow',$user)
-       ->update(array('user_follow'=>$name));
+       foreach($follower as $f){
+           echo '<script>console.log(1)</script>';
+           $userslug=$f->slug_plus_user;
+           for($i=0;$i<strlen($userslug);$i++){
+               if(is_numeric($userslug[$i])){
+                   $number=$userslug[$i];
+               }
+           }
+           DB::table('followers')
+           ->where('user_follow',$user)
+           ->update(array('user_follow'=>$name,'slug_plus_user'=>$name.''.$number));
+       }
+
        return redirect('/profile/'.$name);
     }
 
