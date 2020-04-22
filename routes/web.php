@@ -34,9 +34,7 @@ Route::post('/UpdateCategoryPost','PostController@UpdateCategoryPost');
 Route::post('/UpdateImagePost','PostController@UpdateImagePost');
 Route::post('/AddFollowProfile','PostController@AddFollowProfile');
 
-
-
-
+Route::get('/pass','CommentController@password');
 
 
 });

@@ -124,8 +124,8 @@ class PostController extends Controller
        DB::table('comments')
        ->where('user',$user)
        ->update(array('user'=>$name));
+
        foreach($follower as $f){
-           echo '<script>console.log(1)</script>';
            $userslug=$f->slug_plus_user;
            for($i=0;$i<strlen($userslug);$i++){
                if(is_numeric($userslug[$i])){
@@ -136,7 +136,6 @@ class PostController extends Controller
            ->where('user_follow',$user)
            ->update(array('user_follow'=>$name,'slug_plus_user'=>$name.''.$number));
        }
-
        return redirect('/profile/'.$name);
     }
 
@@ -195,8 +194,6 @@ class PostController extends Controller
         return redirect('/profile/'.$user);
     }
 
-
-
   /********* Start Add Add  Like */
     public function AddFollow(Request $request){
         $nombre_follow =0;
@@ -223,9 +220,6 @@ class PostController extends Controller
         return redirect('/ShowPost/'.$slug );
     }
     /*********End  Add Add Like */
-
-
-
 
  /********* Start Add Add  Like */
  public function AddFollowHome(Request $request){
