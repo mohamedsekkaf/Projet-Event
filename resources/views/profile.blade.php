@@ -100,7 +100,7 @@
                                     <div class="btn-group " role="group" aria-label="">
                                         <div class="btn-group" role="group">
                                             <input type="image" style="width:8vh;height:6vh;"
-                                                src="{{asset('/image/setting.png')}}"
+                                                src="{{asset('/image/setting1.png')}}"
                                                 class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
                                             <ul class="dropdown-menu" s>
