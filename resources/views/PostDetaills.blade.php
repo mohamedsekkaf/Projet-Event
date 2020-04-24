@@ -260,7 +260,7 @@
                     <tr>
                         <td style="width:10vh;text-align:center"><img class="card-img-top img-use"
                                 src="{{url('/image_user')}}/{{$c->user_image}}" alt="">{{$c->user}}</td>
-                        <td style="width:100vh;text-align:center">
+                        <td style="width:140vh;text-align:center">
                             <?php 
                                     $v = 0;
                                     $v1 = $c->comment;
@@ -276,7 +276,26 @@
                                         }
                                 ?>
                         </td>
-                        <td style="width:;text-align:center">{{$c->time}}</td>
+                        <td style="width:;text-align:right;width:40vh">
+                        <?php
+                        $var = $c->time;
+                        $compte= 0;
+                        $string[2]="";
+                        for( $i=0 ; $i<strlen($var);$i++){
+                            if(is_numeric($var[$i])){
+                             echo $var[$i]; 
+                            }
+                            if($var[$i] == " "){
+                                $compte++;
+                            }
+                            if($compte == 1){
+                                $string[0] =$var[$i];
+                            }elseif($compte==2){
+                                $string[1] =$var[$i];
+                            }
+                        } echo  '  '.strtoupper($string[0]).' '.strtoupper($string[1]);
+                        ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -310,5 +329,5 @@
     @endif
     @endforeach
     @endforeach
-    <div>
+    <div> 
         @endsection("content")

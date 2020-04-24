@@ -194,7 +194,7 @@
     </div>
 </div>
 </div>
-<button id="ref_butn">Refresh the page!</button>
+<!-- <button id="ref_butn">Refresh the page!</button> -->
 
 
 
@@ -204,6 +204,4 @@
 
 
 
-
-<span class="glyphicon glyphicon-hand-right"></span>
 @endsection("content")

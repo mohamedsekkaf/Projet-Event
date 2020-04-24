@@ -126,15 +126,16 @@ class PostController extends Controller
        ->update(array('user'=>$name));
 
        foreach($follower as $f){
+           $number = [];
            $userslug=$f->slug_plus_user;
            for($i=0;$i<strlen($userslug);$i++){
                if(is_numeric($userslug[$i])){
-                   $number=$userslug[$i];
+                   array_push($number,$userslug[$i]);
                }
            }
            DB::table('followers')
            ->where('user_follow',$user)
-           ->update(array('user_follow'=>$name,'slug_plus_user'=>$name.''.$number));
+           ->update(array('user_follow'=>$name,'slug_plus_user'=>$name.''.implode("",$number)));
        }
        return redirect('/profile/'.$name);
     }
