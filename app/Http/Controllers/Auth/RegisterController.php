@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Arcanedev\NoCaptcha\Rules\CaptchaRule;
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*

@@ -5,13 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Event</title>
-        <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet">
+        <link  rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.css')}}" >
+        <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <script src="{{asset('/js/jquery.js')}}"></script>
         <script src="{{asset('/js/popper.js')}}"></script>
         <script src="{{asset('/js/bootstrap.js')}}"></script>
         <script src="{{asset('/js/js.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
     </head>
 
     <body>

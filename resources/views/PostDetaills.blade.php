@@ -24,6 +24,7 @@
                                 enctype="multipart/form-data">
                                 @method('POST')
                                 @csrf
+                            
                                 <div class="btn-group " role="group" aria-label="">
                                     <div class="btn-group" role="group">
                                         <input type="image" style="width:8vh;height:6vh;"
@@ -133,7 +134,7 @@
                             <input type="hidden" name="nombre_follow" src="{{asset('/image/like1.png')}}" id=""
                                 value="{{$post->follow}}">
                             <td style="width:10vh;text-align:center"><input type="image" id="img"
-                                    src="{{asset('/image/like.png')}}" style="width:5vh;height:5vh;" alt="Submit">
+                                    src="{{asset('/image/like.png')}}" style="width:5vh;height:5vh;border-radius: 10px;" alt="Submit">
                             </td>
                             <td>
                                 <div class="btn-group " role="group" aria-label="">
@@ -278,7 +279,8 @@
                         </td>
                         <td style="width:;text-align:right;width:40vh">
                         <?php
-                        $var = $c->time;
+                        echo $c->time;
+                        /* $var = $c->time;
                         $compte= 0;
                         $string[2]="";
                         for( $i=0 ; $i<strlen($var);$i++){
@@ -293,7 +295,7 @@
                             }elseif($compte==2){
                                 $string[1] =$var[$i];
                             }
-                        } echo  '  '.strtoupper($string[0]).' '.strtoupper($string[1]);
+                        } echo  '  '.strtoupper($string[0]).' '.strtoupper($string[1]); */
                         ?>
                         </td>
                     </tr>

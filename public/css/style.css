@@ -39,6 +39,7 @@ body{
 /* Style Post Detaills*/
 .card{
  background: #FFFFFF;
+ width: 1005;
 box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 border: 2px solid rgb(186, 241, 245);
@@ -103,7 +104,7 @@ height: 8vh;
 }
 .img-post{
     width: 100%;
-    height: auto;
+    height: 70vh;
     border-radius: 10px;
 }
 .img-use{

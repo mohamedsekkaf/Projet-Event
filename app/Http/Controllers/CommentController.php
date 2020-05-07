@@ -14,13 +14,13 @@ class CommentController extends Controller
 {
     public function AddComment(Request $request){
         $request->validate([
-            "comment"=>"required",
+            "comment"=>"required|max:1000",
         ]);
         $user = Auth::user()->name;
         $comment = $request->input('comment');
         $user_image = $request->input('user_image');
         $slug = $request->input('slug');
-        $data = array('comment'=>$comment,'slug'=>$slug,'user'=>$user,'user_image'=>$user_image,'date'=>date('yy-m-d').' '.date('H:s:i'));
+        $data = array('comment'=>$comment,'slug'=>$slug,'user'=>$user,'user_image'=>$user_image);
         Comment::create($data);
         return redirect('/ShowPost/'.$slug);
     }
@@ -31,6 +31,11 @@ class CommentController extends Controller
             $user->setAttribute('pass',bcrypt($user->password)); 
         }
         return view('pass',compact('users'));
+    }
+    public function Authuser()
+    {
+        $var = Auth::user()->name;
+        return 2345678;
     }
     
 }

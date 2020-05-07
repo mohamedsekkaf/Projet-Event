@@ -21,8 +21,6 @@ class CreateComptePostsTable extends Migration
         });
         $data = array('compte_post'=>1);
         compte_Post::create($data);
-/* 
-        DB::table('compte__posts')->insert(array('compte_post'=>1)); */
     }
 
     /**

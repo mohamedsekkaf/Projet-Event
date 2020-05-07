@@ -87,8 +87,8 @@ class PostController extends Controller
          // Upload Orginal Image           
            $postImage =$compte_post. '.' .'png';
            $request->file('image_post')->move($destinationPath, $postImage);
-        $data=array('title'=>$title,'disc'=>$disc,'slug'=>$compte_post,'user_name'=>$user_name,'category_name'=>$category_name,'created_at'=>date('yy-m-d').' '.date('H:i:s'),'updated_at'=>date('yy-m-d').' '.date('H:i:s'),'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
-        DB::table('posts')->insert($data);
+        $data=array('title'=>$title,'disc'=>$disc,'slug'=>$compte_post,'user_name'=>$user_name,'category_name'=>$category_name,'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
+        Post::create($data);
         return redirect('/');
         }
     }
@@ -104,7 +104,6 @@ class PostController extends Controller
         }
         return view('profile',compact('profileuser','posts','foll'));
     }
-
 
 /**============================ update user name  */
     public function EditUser(Request $request){
