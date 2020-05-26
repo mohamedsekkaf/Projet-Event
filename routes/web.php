@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+
 Route::group(['middleware' => ['auth']], function(){
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/', 'PostController@index');
+    Route::get('/home', function () {
+        return view('home');
+    });
+Route::get('/home', 'PostController@index');
 Route::get('/ShowPost/{slug}' , 'PostController@ShowPost');
 Route::get('/AjouterPost', 'PostController@AjouterPostInfo');
 Route::post('/AjouterPost', 'PostController@AjouterPost');
@@ -36,14 +39,18 @@ Route::post('/AddFollowProfile','PostController@AddFollowProfile');
 Route::get('/Authuser','CommentController@Authuser');
 Route::get('/pass','CommentController@password');
 
-
 });
+Route::get('/Lang','LangageController@ShowLang');
+Route::post('/Lang','LangageController@ChangeLang');
+
+Route::get('/', function () {
+    return view('hello');
+})->middleware('web');
+/* Route::get('/','HomeController@welcome'); */
 
 
-
-
-
-
-Auth::routes();
-
+Route::get('/logout', function(){
+    Auth::logout();
+    return redirect('/');
+});
 

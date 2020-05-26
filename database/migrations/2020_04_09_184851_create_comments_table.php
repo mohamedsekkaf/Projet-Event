@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use App\Comment;
 class CreateCommentsTable extends Migration
 {
     /**
@@ -21,8 +21,13 @@ class CreateCommentsTable extends Migration
             $table->string('user_image');
             $table->timestamps();
         });
+        for($i=0;$i<100;$i++){
+            Comment::create(array('comment'=>Str::random(20),'slug'=>1,'user'=>'mohamed','user_image'=>'mohamed.png'));
+
     }
 
+    
+    }
     /**
      * Reverse the migrations.
      *
@@ -31,5 +36,6 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
+        
     }
 }

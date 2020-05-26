@@ -1,5 +1,6 @@
 @extends('layout')
 @section("content")
+<br><br><br>
 <div>
     <div class="container">
         <div class="row">
@@ -12,8 +13,8 @@
         <div class="col-12">
             <div class="card">
                 <br>
-                <a href="{{url('/ShowPost')}}/{{$post->slug}}">
-                    <h4 class="card-title center">{{$post->title}}</h4>
+                <a class="text-decoration" href="{{url('/ShowPost')}}/{{$post->slug}}">
+                    <h4 class="card-title center"><strong><i>{{$post->title}}</i></strong></h4>
                 </a>
                 <div class="container">
                     <table>

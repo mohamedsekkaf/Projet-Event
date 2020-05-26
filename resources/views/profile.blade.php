@@ -1,6 +1,7 @@
 @extends('layout')
 @section('content')
 @foreach($profileuser as $profile)
+<br><br><br>
 <div class="container">
     <div class="card">
         <br>
@@ -16,11 +17,10 @@
                     @method('POST')
                     @csrf
                     <input type="file" name="file" id="file" class="inputfile" required />
-                    <label class="edit-label" for="file" id="r" style="" data-fleep="tooltip" data-placement="bottom"
-                        data-original-title="Clicker Pour Selectionner Image" data-toggle="modal">Updoad</label>
+                    <label class="edit-label" for="file" id="r" style=""><img style="width:10vh;height:5vh;" src="{{asset('image/upload.png')}}" alt=""></label>
                     <br>
                     <label id="error-edit-image-user"></label>
-                    <input id="btn-save" class="btn-save" onclick="btnsave()" type="submit" value="save">
+                    <input id="btn-save" class="btn-save btnEdit" onclick="btnsave()" type="submit" value="save">
                 </form>
             </div>
         </div>
@@ -32,9 +32,10 @@
                 <div class="container">
                     <label for=""> Change Name</label>
                     <input id="name" name="name" type="text" class="form-control" value="{{$profile->name}}" required>
-                    <input type="submit" value="Save">
+                    <input type="submit" class="btnEdit" value="Save">
                 </div>
             </form>
+            <br>
             <form action="{{ url('/EditUserEmail')}}" id="frm" method="POST" enctype="multipart/form-data">
                 @method('POST')
                 @csrf
@@ -42,10 +43,11 @@
                     <label>Change Email </label>
                     <input id="email" name="email" type="text" class="form-control" value="{{$profile->email}}"
                         required>
-                    <input id="id-btn-save" type="submit" value="Save">
+                    <input id="id-btn-save" type="submit" class="btnEdit"  value="Save">
                 </div>
             </form>
         </div>
+        <br>
         <div class="container">
             <form action="{{ url('/EditUserPass')}}" id="" method="POST" enctype="multipart/form-data">
                 @method('POST')
@@ -54,7 +56,7 @@
                     <label>change Password</label>
                     <input type="password" name="pasword" id="pass" class="form-control">
                     <input type="checkbox" onclick="showpassword()">Show Password<br>
-                    <input type="submit" value="Save">
+                    <input type="submit" class="btnEdit" value="Save">
                 </div>
                 <div class="col-12">
                     @foreach($errors->all() as $err)

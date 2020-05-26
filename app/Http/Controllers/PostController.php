@@ -89,7 +89,7 @@ class PostController extends Controller
            $request->file('image_post')->move($destinationPath, $postImage);
         $data=array('title'=>$title,'disc'=>$disc,'slug'=>$compte_post,'user_name'=>$user_name,'category_name'=>$category_name,'image_post'=>$postImage,'img_user'=>Auth::user()->image,'follow'=>0);
         Post::create($data);
-        return redirect('/');
+        return redirect('/home');
         }
     }
 
@@ -215,7 +215,7 @@ class PostController extends Controller
          }
          else{
              $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
-             DB::table('followers')->insert($data);
+             Follower::create($data);
          }
         return redirect('/ShowPost/'.$slug );
     }
@@ -242,9 +242,9 @@ class PostController extends Controller
      }
      else{
          $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
-         DB::table('followers')->insert($data);
+         Follower::create($data);
      }
-    return redirect('/');
+    return redirect('/home');
 }
 /*********End  Add Add Like */
  /********* Start Add Add  Like Profile */
@@ -270,7 +270,7 @@ class PostController extends Controller
      }
      else{
          $data = array('user_follow'=>$user,'follow'=>1,'slug_follow'=>$slug,'slug_plus_user'=>$user.''.$slug);
-         DB::table('followers')->insert($data);
+         Follower::create($data);
      }
     return redirect('/profile/'.$user_profile)->with('status', $slug);
 }
@@ -317,11 +317,14 @@ class PostController extends Controller
         }
     }
     /********* End UpdateImagePost  */
+
+    /***Delete Post  */
  public function DeletePost(Request $request){
     $slug = $request->input('slug');
     Post::where('slug',$slug)->delete();
     return redirect('/');
 }
+/** End Delete Post */
 
 }
 /******************fuction generate string different */
