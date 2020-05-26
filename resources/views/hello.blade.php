@@ -234,7 +234,7 @@
                         </div>
                         <div class="col-md-6 " data-aos="fade" data-aos-delay="200">
                             <div class="person text-center">
-                                <img src="image_user/polat.png" alt="Image" class="imageourteam">
+                                <img src="image_user/yassineourteam.png" alt="Image" class="imageourteam">
                                 <h3>Yassine chabnoune</h3>
                                 <p class="position text-muted">Developper</p>
                                 <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at
