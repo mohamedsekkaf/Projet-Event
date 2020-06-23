@@ -1,13 +1,13 @@
 @extends('layout')
 @section("content")
-
+<br><br><br>
 <div class="container">
     @foreach($pd as $post)
     <div class="col-12">
         <div class="card">
             <br>
             <div class="container">
-                <h4 class="card-title center">{{$post->title}}</h4>
+            <h4 class="card-title center"><strong><i>{{$post->title}}</i></strong></h4>
             </div>
             <div class="container">
 

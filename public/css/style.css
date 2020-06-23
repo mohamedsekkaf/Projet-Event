@@ -31,6 +31,7 @@ body{
     height: 3vh;
     margin-bottom: 1vh;
     margin-left: 2vh;
+    
 }
 .a-logout{
     color: red;
@@ -47,7 +48,7 @@ border-bottom: 2px solid rgba(129, 45, 45, 0.61);
 }
 .form-control{
     text-align: center;
-    border: 1px solid rgba(238, 14, 14, 0.658);
+    
 }
 .label-din{
     text-align: center;

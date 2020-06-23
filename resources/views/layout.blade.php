@@ -95,8 +95,14 @@
                 </div>
             </div>
         </nav>
-
         @yield("content")
+        <div class="container">
+            <div class="row">
+                <div style="text-align:center;background-color:#e6e6e6;border-radius:50%;" class="col-12">
+                 DESIGNED BY SEKKAF
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>

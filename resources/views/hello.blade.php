@@ -92,7 +92,7 @@
                             <div class="row justify-content-center mb-4">
                                 <div class="col-md-8 text-center">
                                     <h1>Welcome to Web Site </span></h1>
-                                    <p class="lead mb-5">Gestion Event By <a href="#" target="_blank">EstsB</a>
+                                    <p class="lead mb-5">Gestion Event By <a href="#" target="_blank">SEKKAF</a>
                                     </p>
                                     @guest
                                     <div><a href="{{route('login')}}" class="btn btn-primary btn-md">Login</a></div>
