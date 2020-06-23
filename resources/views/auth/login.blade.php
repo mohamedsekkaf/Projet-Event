@@ -69,7 +69,7 @@
                 </div>
                 <div class="container">
                     <div style="text-align:center">
-                        <a style="font-size:30px;" class="a-register" href="{{ route('register') }}">S'inscrire</a>
+                        <a style="font-size:30px;" class="a-register" href="{{ route('register') }}">Sign Up</a>
                     </div>
                 </div>
             </div>

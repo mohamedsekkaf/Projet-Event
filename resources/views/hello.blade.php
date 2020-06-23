@@ -266,7 +266,7 @@
                                         document.write(new Date().getFullYear());
                                         </script> All rights reserved | designed <i class="icon-heart text-danger"
                                             aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                            target="_blank">Sekkaf</a>
+                                            target="_blank">Sekkaf And Chabnoune</a>
                                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     </p>
                                 </div>
